@@ -1,0 +1,29 @@
+26.03.24
+
+1) Category listda delete va update qiladigan modal qo`shing +
+2) Product create bo`limida rasmlar uchun multiple inputga design berish +
+3) Product create bo`limida videolar qo`shish uchun multiple input yarating +
+4) Product detailda product o`chirish uchun modal oyna yarating +
+5) Product updateda product img va videolarni for yordamida display qiling va 
+rasm yonida o`chirish uchun link tursin, uni bosganda o`sha rasm o`chib ketsin +
+6) Product updateda productlarning rasm va videolari uchun multiple input hosil qiling +
+
+
+28.03.24
+1) Product, Cart uchun code generation qiladigan signal yozish va view va 
+urllarda idni o`rniga code qo`yish +
+2) Review modelni birinchi marotaba yaratisin,
+ikkinchi marotaba so`rov kelganda yaratmasdan o`zgartiradigan signal yozing +
+3) User o`zini profilini CRUD qilsin 
+4) Maxsulotlarni filterlashni bosganda, Filterlangan categoryiya optionda selected bo`lib qolsin +
+5) Front uchun Cateogry va Productlarni List va Detailini ko`rsatuvchi kod yozing +
+
+30.03.24
+1) Productlar ro`yxatida + qo`shsa cartga qo`shadigan kod yozing +
+2) Cart detilda is_Active bo`lgan cartlarda productga + qo`shsa ko`payadigan - qilsa kamayadigan kod yozing 
+3) Cart detilda is_Active bo`lgan cartlarda x bolsa remove bo`lishi kerak maxsulot +
+4) pdf file bilan ishlashni o`rganing. (qo`shimcha bunga ball qo`yilmaydi)
+5) buyurtma berishni bosganda cart__is_active=False bo`lishi kerak +
+6) cart detailda chegirma bo`lsa o`sha chiqishi kerak +
+7) product detailda add cart bo`lganda update bo`ladigan qilish kerak +
+8) product list add to cart qo`shilishi kerak +

@@ -1,0 +1,114 @@
+{% extends 'front/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="{% static 'front/images/breadcrumb/bg/1-1-1919x388.jpg' %}" style="background-image: url({% static 'front/images/breadcrumb/bg/1-1-1919x388.jpg' %}');">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">Cart Page</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'front:index' %}">Home</a>
+                            </li>
+                            <li>Cart Page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="table-content table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="product_remove">remove</th>
+                                        <th class="product-thumbnail">image</th>
+                                        <th class="cart-product-name">Product</th>
+                                        <th class="product-price">Unit Price</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-subtotal">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in queryset %}
+                                    <tr>
+                                        <td class="product_remove">
+                                            <a href="{% url 'front:product_delete' i.id %}">
+                                                <i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder" tabindex="0"></i>
+                                            </a>
+                                        </td>
+                                        <td class="product-thumbnail">
+                                            <a href="#">
+                                                <img src="{{i.product.banner_img.url}}" alt="Cart Thumbnail" style="width: 100px;">
+                                            </a>
+                                        </td>
+                                        <td class="product-name"><a href="#">{{i.product.name}}</a></td>
+                                        {% if i.product.discount_price %}
+                                        <td class="product-price">
+                                            <span class="amount"><s style="color: red;">{{i.product.price}}</s></span><br>
+                                            <span class="amount">{{i.product.discount_price}}</span>
+                                        </td>
+                                        {% else %}
+                                        <td class="product-price"><span class="amount">{{i.product.price}}</span></td>
+                                        {% endif %}
+                                        {% if cart.is_active %}
+                                        <td class="quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box"  name="{{i.id}}" value="{{i.count}}" type="text">
+                                                <div class="dec qtybutton">
+                                                    <i class="fa fa-minus"></i>
+                                                </div>
+                                                <div class="inc qtybutton">
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                            <div class="dec qtybutton"><i class="fa fa-minus"></i></div><div class="inc qtybutton"><i class="fa fa-plus"></i></div></div>
+                                        </td>
+                                        {% else %}
+                                        <td class="product-subtotal"><span class="amount">{{i.count}}</span></td>
+                                        {% endif %}
+                                        <td class="product-subtotal"><span class="amount">{{i.price}}</span></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% if cart.is_active %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="coupon-all">
+                                    <div class="coupon2">
+                                        <button type="submit" class="btn btn-dark"> Buyurtma berish </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-5 ml-auto">
+                                <div class="cart-page-total">
+                                    <h2>Cart totals</h2>
+                                    <ul>
+                                        <li>Subtotal <span>{{cart.price}}</span></li>
+                                        <li>Total <span>{{cart.total_price}}</span></li>
+                                    </ul>
+                                    <a href="#">Proceed to checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+    
